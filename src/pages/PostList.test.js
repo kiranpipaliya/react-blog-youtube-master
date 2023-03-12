@@ -1,9 +1,8 @@
 import React from 'react';
-import { render, screen, waitForElementToBeRemoved } from '@testing-library/react';
+import { screen, waitForElementToBeRemoved } from '@testing-library/react';
 import PostList from './PostList';
 import * as reactQuery from 'react-query';
 import { useColorMode, useTheme } from '@chakra-ui/core';
-import { BrowserRouter } from 'react-router-dom';
 
 import { setupServer } from 'msw/node';
 import { rest } from 'msw';
@@ -76,7 +75,7 @@ describe('Post list', () => {
     renderWithRouter(<PostList isDrawerOpen={false} closeDrawer={jest.fn()} />);
 
     const itemListElement = screen.queryAllByTestId('list-item').map((item) => item.textContent);
-    console.log(itemListElement);
+
     expect(itemListElement).toMatchInlineSnapshot(`
       Array [
         "Test title 1",
